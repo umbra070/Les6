@@ -105,6 +105,6 @@ public class Main {
             }
             charge += chargingPerMinute;
         }
-        System.out.println(String.format("Время зарядки составило %d минут. Текущий заряд составляет %d", minute, charge));
+        System.out.println(String.format("Время зарядки составило %d минут.", minute));
     }
 }

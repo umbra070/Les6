@@ -91,13 +91,16 @@ public class Main {
         System.out.println("\n\rEx5v1\n\r");
         while(charge<100){
             minute++;
-            //System.out.println(String.format("Текущий заряд составляет %d", charge));
+            System.out.println(String.format("Текущий заряд составляет %d", charge));
             if(minute % 10 == 0 && charge > startCharge){
                 overheads++;
+                System.out.println(String.format("Случился перегрев #%d", overheads));
+                System.out.println(String.format("Текущее время зарядки: %d", minute));
                 if(overheads > maxOverheads){
+                    System.out.println(String.format("Зарядка прекращена. Текущий заряд: %d", charge));
                     break;
                 }
-            }else if(minute % 10 <= 2 && charge > startCharge){
+            }else if(minute % 10 < 2 && charge > startCharge){
                 continue;
             }
             charge += chargingPerMinute;

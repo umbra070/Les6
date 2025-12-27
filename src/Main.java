@@ -8,7 +8,7 @@ public class Main {
     static int dayForNotPay = 5;
     static int coastPerDay = 100;
     static int balance = 6137;
-    static int daysForParking = 1;
+    static int daysForParking = 0;
     static final int startBalance = 6137;
     //Ex4 Variables
     static int month = 0;
@@ -61,25 +61,19 @@ public class Main {
             }else{
                 balance -= coastPerDay;
             }
-
         }
         System.out.println(String.format("За сумму %d вам будет предоставлено %d дней парковки", startBalance, daysForParking));
         //Ex3v2
         System.out.println("\n\rEx3v2\n\r");
         balance = startBalance;
         daysForParking = 0;
-        for(; balance >= 0; balance -=0){
+        for(; balance >= coastPerDay; balance -=0){
             daysForParking++;
             if((daysForParking) % dayForNotPay == 0){
-                //System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
+                System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
                 continue;
             }
-            //System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
-            if((balance -= coastPerDay) < 0){
-                break;
-            }else{
-                balance -= coastPerDay;
-            }
+            System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
         }
         System.out.println(String.format("За сумму %d вам будет предоставлено %d дней парковки", startBalance, daysForParking));
         //Ex4v1
@@ -100,19 +94,19 @@ public class Main {
         System.out.println("\n\rEx5v1\n\r");
         while(charge<100){
             minute++;
-            System.out.println(String.format("Текущий заряд составляет %d", charge));
+            System.out.println(String.format("(Текущий заряд составляет %d)(текущее время с начала заряда: %d)", charge, minute));
             if(minute % 10 == 0 && charge > startCharge){
                 overheads++;
-                minute += 2;
+                //minute += 2;
                 System.out.println(String.format("Случился перегрев #%d", overheads));
                 System.out.println(String.format("Текущее время зарядки: %d", minute));
                 if(overheads > maxOverheads){
                     System.out.println(String.format("Зарядка прекращена. Текущий заряд: %d", charge));
                     break;
                 }
-            }//else if(minute % 10 < 2 && charge > startCharge){
-               // continue;
-            //}
+            }else if(minute % 10 < 2 && charge > startCharge){
+                continue;
+            }
             charge += chargingPerMinute;
         }
         System.out.println(String.format("Время зарядки составило %d минут.", minute));

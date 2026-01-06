@@ -7,9 +7,9 @@ public class Main {
     //Ex3 variables
     static int dayForNotPay = 5;
     static int coastPerDay = 100;
-    static int balance = 6137;
-    static int daysForParking = 0;
-    static final int startBalance = 6137;
+    static int daysForParking = 1;
+    static final int startBalance = 1351;
+    static int balance = startBalance;
     //Ex4 Variables
     static int month = 0;
     static float total = 0f;
@@ -51,29 +51,29 @@ public class Main {
         System.out.println("\n\rEx3v1\n\r");
         while (balance >=0){
             daysForParking++;
-            if((daysForParking) % dayForNotPay == 0){
-                //System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
+            System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
+            if((daysForParking % dayForNotPay) == 0){
                 continue;
             }
-            //System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
-            if((balance -= coastPerDay) < 0){
+
+            if((balance - coastPerDay) < 0){
                 break;
-            }else{
-                balance -= coastPerDay;
             }
+            balance -= coastPerDay;
         }
         System.out.println(String.format("За сумму %d вам будет предоставлено %d дней парковки", startBalance, daysForParking));
         //Ex3v2
         System.out.println("\n\rEx3v2\n\r");
         balance = startBalance;
         daysForParking = 0;
-        for(; balance >= coastPerDay; balance -=0){
+        for(; balance >= coastPerDay; balance -= 0){
+            System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
             daysForParking++;
             if((daysForParking) % dayForNotPay == 0){
-                System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
+                //System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
                 continue;
             }
-            System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
+            balance -= coastPerDay;
         }
         System.out.println(String.format("За сумму %d вам будет предоставлено %d дней парковки", startBalance, daysForParking));
         //Ex4v1
@@ -104,7 +104,7 @@ public class Main {
                     System.out.println(String.format("Зарядка прекращена. Текущий заряд: %d", charge));
                     break;
                 }
-            }else if(minute % 10 < 2 && charge > startCharge){
+            }else if(minute % 10 <= 2 && charge > startCharge){
                 continue;
             }
             charge += chargingPerMinute;

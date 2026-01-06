@@ -49,7 +49,7 @@ public class Main {
         }
         //Ex3v1
         System.out.println("\n\rEx3v1\n\r");
-        while (balance >=0){
+        while (balance >= 0){
             daysForParking++;
             System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
             if((daysForParking % dayForNotPay) == 0){
@@ -65,8 +65,8 @@ public class Main {
         //Ex3v2
         System.out.println("\n\rEx3v2\n\r");
         balance = startBalance;
-        daysForParking = 0;
-        for(; balance >= coastPerDay; balance -= 0){
+        daysForParking = 1;
+        for(; balance >= 0; balance -= 0){
             System.out.println(String.format("(День %d)(Баланс %d)", daysForParking, balance));
             daysForParking++;
             if((daysForParking) % dayForNotPay == 0){
